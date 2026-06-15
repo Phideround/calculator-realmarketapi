@@ -1,0 +1,11 @@
+/* TEAM */
+Site: Calculators.RealMarketAPI.com
+Brand: RealMarketAPI
+Contact: https://realmarketapi.com
+
+/* THANKS */
+Traders worldwide who use these tools every day.
+
+/* SITE */
+Standards: HTML5, CSS, TypeScript
+Components: TanStack Start, React, Tailwind CSS

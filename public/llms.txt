@@ -1,0 +1,15 @@
+# Calculators.RealMarketAPI
+
+> Free professional trading calculators for forex, gold, crypto, stocks, indices and commodities.
+> Powered by RealMarketAPI — real-time market data API for traders, AI agents, and dashboards.
+
+## Calculators
+- [Position Size Calculator](/position-size): Ideal lot size from account, risk %, and stop loss.
+- [Risk Calculator](/risk): Dollar and percentage risk for a planned trade.
+- [Margin Calculator](/margin): Required margin and margin usage by leverage.
+- [Drawdown Calculator](/drawdown): Drawdown % and recovery needed.
+- [Profit Calculator](/profit): P/L and ROI for long or short trades.
+
+## Related
+- RealMarketAPI: https://realmarketapi.com
+- Learn: https://learn.realmarketapi.com

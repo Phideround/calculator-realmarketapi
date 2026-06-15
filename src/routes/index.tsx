@@ -1,29 +1,217 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+
+const CALCS = [
+  { to: "/position-size", title: "Position Size Calculator", desc: "Calculate the ideal position size based on your account balance and risk management rules." },
+  { to: "/risk", title: "Risk Calculator", desc: "Understand exactly how much capital you are risking before entering a trade." },
+  { to: "/margin", title: "Margin Calculator", desc: "Estimate margin requirements before opening a trade." },
+  { to: "/drawdown", title: "Drawdown Calculator", desc: "Measure account performance and understand recovery requirements." },
+  { to: "/profit", title: "Profit Calculator", desc: "Estimate potential gains and losses before placing a trade." },
+] as const;
+
+const FAQ = [
+  { q: "Are these trading calculators free?", a: "Yes. All calculators on Calculators.RealMarketAPI.com are free forever and do not require registration." },
+  { q: "Can I use these for forex, gold, crypto, stocks, indices and commodities?", a: "Yes. Each calculator supports the most popular instruments across forex pairs, metals like XAUUSD, major crypto, equity indices, and commodities." },
+  { q: "How accurate are the calculations?", a: "Calculations use standard industry formulas. For live execution, combine with real-time prices from RealMarketAPI to validate against your broker’s quotes." },
+  { q: "What is the recommended risk per trade?", a: "Most professional traders risk only 1–2% of their account per trade to survive losing streaks and compound returns over time." },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Free Trading Calculators — Position Size, Risk, Margin, Drawdown, Profit" },
+      { name: "description", content: "Free professional trading calculators for forex, gold, crypto, stocks, indices and commodities. Calculate position size, risk, margin, drawdown and profit instantly." },
+      { property: "og:title", content: "Free Trading Calculators | RealMarketAPI" },
+      { property: "og:description", content: "Position size, risk, margin, drawdown and profit calculators for serious traders. Free forever, no registration." },
+      { property: "og:url", content: "/" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Calculators.RealMarketAPI",
+          url: "https://calculators.realmarketapi.com",
+        }),
+      },
     ],
   }),
-  component: Index,
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Home() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 50% at 50% -10%, oklch(0.45 0.18 275 / 0.35), transparent 60%)",
+          }}
+        />
+        <div className="mx-auto max-w-6xl px-4 pt-16 pb-12 sm:px-6 sm:pt-24 sm:pb-16 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex items-center rounded-full border border-border bg-card/60 px-3 py-1 text-xs font-medium text-muted-foreground">
+              Professional Trading Tools Powered by RealMarketAPI
+            </span>
+            <h1 className="mt-5 font-display text-4xl font-bold tracking-tight sm:text-6xl">
+              Free <span className="brand-text">Trading Calculators</span>
+            </h1>
+            <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
+              Professional trading calculators to help you manage risk, position size, margin requirements, profits, and drawdowns.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Link to="/position-size" className="inline-flex items-center rounded-md brand-gradient px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90">
+                Position Size Calculator
+              </Link>
+              <Link to="/risk" className="inline-flex items-center rounded-md border border-border bg-card px-5 py-2.5 text-sm font-semibold hover:bg-secondary">
+                Risk Calculator
+              </Link>
+            </div>
+            <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+              <li>✓ Free Forever</li>
+              <li>✓ No Registration Required</li>
+              <li>✓ Used by Traders Worldwide</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Calculators Grid */}
+      <section id="calculators" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <h2 className="font-display text-2xl font-bold sm:text-3xl">All Calculators</h2>
+            <p className="mt-2 text-muted-foreground">Pick a tool to get started. Each calculator is instant and works offline in your browser.</p>
+          </div>
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {CALCS.map((c) => (
+            <Link
+              key={c.to}
+              to={c.to}
+              className="group rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/50 hover:bg-card/80"
+            >
+              <h3 className="font-display text-lg font-semibold">{c.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{c.desc}</p>
+              <span className="mt-4 inline-flex items-center text-sm font-medium text-primary group-hover:underline">Open calculator →</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Education */}
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <h2 className="font-display text-2xl font-bold sm:text-3xl">Why Risk Management Matters</h2>
+        <p className="mt-2 max-w-2xl text-muted-foreground">The single largest predictor of long-term trading survival is how you size and manage risk — not how often you’re right.</p>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { t: "Never risk more than 1–2% per trade", d: "Small per-trade risk lets you survive losing streaks without blowing up." },
+            { t: "Protect your capital first", d: "Capital preservation is the prerequisite for compounding. Defense before offense." },
+            { t: "Consistency beats large wins", d: "A steady edge applied with discipline outperforms occasional home runs." },
+            { t: "R:R beats win rate", d: "A 40% win rate with 1:3 risk-to-reward outperforms 60% wins with 1:1." },
+          ].map((c) => (
+            <div key={c.t} className="rounded-xl border border-border bg-card p-6">
+              <h3 className="font-display text-base font-semibold">{c.t}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{c.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SEO long-form content */}
+      <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="prose prose-invert prose-headings:font-display max-w-none text-muted-foreground prose-strong:text-foreground prose-a:text-primary prose-h2:mt-10">
+          <h2>The Complete Guide to Trading Calculators</h2>
+          <p>
+            Whether you trade <strong>forex</strong>, <strong>gold</strong>, <strong>crypto</strong>, <strong>stocks</strong>, <strong>indices</strong>, or <strong>commodities</strong>, a disciplined trader leans on a small set of calculations before every order. The five free trading calculators on Calculators.RealMarketAPI cover the math that separates random clicking from a repeatable process: sizing, risk, margin, drawdown, and profit.
+          </p>
+
+          <h2>Position Size Calculator</h2>
+          <p>
+            A <Link to="/position-size">position size calculator</Link> answers the most important question in trading: <em>how big should this trade be?</em> The formula uses three inputs — your account balance, the percentage of capital you are willing to risk on a single trade, and the distance from entry to your stop loss in pips (or price). Output is a position size in units, lots, or contracts that, if your stop is hit, will cost exactly the percentage you defined. Professional desks rarely risk more than 1–2% per trade. The position size tool makes that rule mechanical: change the stop distance, the size auto-adjusts; change the account, the size scales. This is the single most important calculator a discretionary or systematic trader can use.
+          </p>
+
+          <h2>Forex Risk Calculator</h2>
+          <p>
+            A <Link to="/risk">forex risk calculator</Link> works the other direction. Given an entry price, a stop price, and a position size, it tells you exactly how many dollars you are risking and what percentage of your account that represents. It is the sanity check you run before sending the order: if the screen shows 6% account risk on a “small” scalp, the calculator tells you to cut the size before the market does. The same logic applies to gold, indices, and crypto — only the contract specification changes.
+          </p>
+
+          <h2>Margin Calculator</h2>
+          <p>
+            Leverage amplifies returns and losses, and the <Link to="/margin">margin calculator</Link> shows what your broker actually parks against the trade. Given an instrument, position size, and leverage, the tool computes required margin and margin usage as a percentage of your equity. Traders who blow up are almost always over-leveraged: their margin usage is so high that a normal pullback triggers a margin call. Running this calculation before entry exposes that risk before money is at stake.
+          </p>
+
+          <h2>Trading Drawdown Calculator</h2>
+          <p>
+            A <Link to="/drawdown">trading drawdown calculator</Link> measures how far your account has fallen from a high watermark and, critically, what return you need to recover. The math is not symmetrical: a 20% drawdown requires a 25% gain to break even; a 50% drawdown requires a 100% gain. This is the most under-appreciated concept in retail trading. Understanding the recovery curve is what makes traders take small losses early and refuse to average down into a losing position.
+          </p>
+
+          <h2>Profit Calculator for Traders</h2>
+          <p>
+            A <Link to="/profit">profit calculator</Link> estimates the dollar profit or loss and ROI of a trade given the entry price, exit price, position size, and instrument. Use it before entering a trade to confirm that the reward is worth the risk you measured with the risk calculator, and use it after closing to verify your broker statement. Combined with a position size calculator on entry, it lets you express any trade idea as a clean risk-to-reward ratio.
+          </p>
+
+          <h2>How to Use These Calculators Together</h2>
+          <p>
+            A disciplined workflow looks like this: define your maximum loss with the position size calculator, validate the dollar risk with the risk calculator, confirm the margin requirement fits your account with the margin calculator, project the upside with the profit calculator, and review weekly with the drawdown calculator. Five minutes of calculation before each session is the difference between a hobbyist account and a professional one.
+          </p>
+
+          <h2>Why Free, and Why RealMarketAPI</h2>
+          <p>
+            These tools are free because the math is universal. The edge is not in the calculator; it is in the trader who uses it consistently. We publish them as a companion to <a href="https://realmarketapi.com" rel="noreferrer">RealMarketAPI</a>, our real-time market data API for forex, crypto, stocks, indices, and commodities, and <a href="https://learn.realmarketapi.com" rel="noreferrer">learn.realmarketapi.com</a>, our trading and developer education hub. If you build trading apps, AI agents, dashboards, or automated strategies, RealMarketAPI provides the price feed; these calculators are how you size what you trade with it.
+          </p>
+
+          <h2>Frequently Asked Questions</h2>
+          {FAQ.map((f) => (
+            <div key={f.q} className="not-prose mt-4 rounded-lg border border-border bg-card p-4">
+              <h3 className="font-display text-base font-semibold text-foreground">{f.q}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      {/* CTA Banner */}
+      <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+        <div className="overflow-hidden rounded-2xl border border-border brand-gradient p-8 sm:p-12">
+          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="max-w-xl">
+              <h2 className="font-display text-2xl font-bold text-primary-foreground sm:text-3xl">
+                Need real-time market data for your trading app, AI agent, or dashboard?
+              </h2>
+              <p className="mt-2 text-primary-foreground/85">
+                RealMarketAPI delivers forex, crypto, stocks, indices and commodities data with a single API.
+              </p>
+            </div>
+            <a
+              href="https://realmarketapi.com"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex shrink-0 items-center rounded-md bg-[#0f172a] px-5 py-3 text-sm font-semibold text-white hover:opacity-90"
+            >
+              Get RealMarketAPI →
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

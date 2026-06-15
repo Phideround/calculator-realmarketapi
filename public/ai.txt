@@ -1,0 +1,8 @@
+# ai.txt — Policy for AI crawlers and agents
+# Site: Calculators.RealMarketAPI.com
+
+User-agent: *
+Allow: /
+Content-Usage: training-allowed, citation-required
+Attribution: "Calculators.RealMarketAPI — Powered by RealMarketAPI"
+Contact: https://realmarketapi.com
