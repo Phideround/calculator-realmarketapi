@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { SlidersHorizontal, BarChart3 } from "lucide-react";
 import type { ReactNode } from "react";
 
 interface Crumb { to?: string; label: string }
