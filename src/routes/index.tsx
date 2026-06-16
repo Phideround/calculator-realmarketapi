@@ -108,10 +108,15 @@ function Home() {
             <Link
               key={c.to}
               to={c.to}
-              className="group rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/50 hover:bg-card/80"
+              className="group animate-fade-in rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:bg-card/80 hover:shadow-lg"
             >
-              <h3 className="font-display text-lg font-semibold">{c.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{c.desc}</p>
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <c.Icon className="h-5 w-5" />
+                </div>
+                <h3 className="font-display text-lg font-semibold">{c.title}</h3>
+              </div>
+              <p className="mt-3 text-sm text-muted-foreground">{c.desc}</p>
               <span className="mt-4 inline-flex items-center text-sm font-medium text-primary group-hover:underline">Open calculator →</span>
             </Link>
           ))}
