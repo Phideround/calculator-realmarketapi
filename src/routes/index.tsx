@@ -145,58 +145,21 @@ function Home() {
         </div>
       </section>
 
-      {/* SEO long-form content */}
-      <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="prose prose-invert prose-headings:font-display max-w-none text-muted-foreground prose-strong:text-foreground prose-a:text-primary prose-h2:mt-10">
-          <h2>The Complete Guide to Trading Calculators</h2>
-          <p>
-            Whether you trade <strong>forex</strong>, <strong>gold</strong>, <strong>crypto</strong>, <strong>stocks</strong>, <strong>indices</strong>, or <strong>commodities</strong>, a disciplined trader leans on a small set of calculations before every order. The five free trading calculators on Calculators.RealMarketAPI cover the math that separates random clicking from a repeatable process: sizing, risk, margin, drawdown, and profit.
-          </p>
-
-          <h2>Position Size Calculator</h2>
-          <p>
-            A <Link to="/position-size">position size calculator</Link> answers the most important question in trading: <em>how big should this trade be?</em> The formula uses three inputs — your account balance, the percentage of capital you are willing to risk on a single trade, and the distance from entry to your stop loss in pips (or price). Output is a position size in units, lots, or contracts that, if your stop is hit, will cost exactly the percentage you defined. Professional desks rarely risk more than 1–2% per trade. The position size tool makes that rule mechanical: change the stop distance, the size auto-adjusts; change the account, the size scales. This is the single most important calculator a discretionary or systematic trader can use.
-          </p>
-
-          <h2>Forex Risk Calculator</h2>
-          <p>
-            A <Link to="/risk">forex risk calculator</Link> works the other direction. Given an entry price, a stop price, and a position size, it tells you exactly how many dollars you are risking and what percentage of your account that represents. It is the sanity check you run before sending the order: if the screen shows 6% account risk on a “small” scalp, the calculator tells you to cut the size before the market does. The same logic applies to gold, indices, and crypto — only the contract specification changes.
-          </p>
-
-          <h2>Margin Calculator</h2>
-          <p>
-            Leverage amplifies returns and losses, and the <Link to="/margin">margin calculator</Link> shows what your broker actually parks against the trade. Given an instrument, position size, and leverage, the tool computes required margin and margin usage as a percentage of your equity. Traders who blow up are almost always over-leveraged: their margin usage is so high that a normal pullback triggers a margin call. Running this calculation before entry exposes that risk before money is at stake.
-          </p>
-
-          <h2>Trading Drawdown Calculator</h2>
-          <p>
-            A <Link to="/drawdown">trading drawdown calculator</Link> measures how far your account has fallen from a high watermark and, critically, what return you need to recover. The math is not symmetrical: a 20% drawdown requires a 25% gain to break even; a 50% drawdown requires a 100% gain. This is the most under-appreciated concept in retail trading. Understanding the recovery curve is what makes traders take small losses early and refuse to average down into a losing position.
-          </p>
-
-          <h2>Profit Calculator for Traders</h2>
-          <p>
-            A <Link to="/profit">profit calculator</Link> estimates the dollar profit or loss and ROI of a trade given the entry price, exit price, position size, and instrument. Use it before entering a trade to confirm that the reward is worth the risk you measured with the risk calculator, and use it after closing to verify your broker statement. Combined with a position size calculator on entry, it lets you express any trade idea as a clean risk-to-reward ratio.
-          </p>
-
-          <h2>How to Use These Calculators Together</h2>
-          <p>
-            A disciplined workflow looks like this: define your maximum loss with the position size calculator, validate the dollar risk with the risk calculator, confirm the margin requirement fits your account with the margin calculator, project the upside with the profit calculator, and review weekly with the drawdown calculator. Five minutes of calculation before each session is the difference between a hobbyist account and a professional one.
-          </p>
-
-          <h2>Why Free, and Why RealMarketAPI</h2>
-          <p>
-            These tools are free because the math is universal. The edge is not in the calculator; it is in the trader who uses it consistently. We publish them as a companion to <a href="https://realmarketapi.com" rel="noreferrer">RealMarketAPI</a>, our real-time market data API for forex, crypto, stocks, indices, and commodities, and <a href="https://learn.realmarketapi.com" rel="noreferrer">learn.realmarketapi.com</a>, our trading and developer education hub. If you build trading apps, AI agents, dashboards, or automated strategies, RealMarketAPI provides the price feed; these calculators are how you size what you trade with it.
-          </p>
-
-          <h2>Frequently Asked Questions</h2>
+      {/* FAQ */}
+      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 className="font-display text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
+        <div className="mt-6 space-y-4">
           {FAQ.map((f) => (
-            <div key={f.q} className="not-prose mt-4 rounded-lg border border-border bg-card p-4">
+            <div key={f.q} className="rounded-lg border border-border bg-card p-4">
               <h3 className="font-display text-base font-semibold text-foreground">{f.q}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{f.a}</p>
             </div>
           ))}
         </div>
-      </article>
+        <p className="mt-8 text-sm text-muted-foreground">
+          Built as a companion to <a href="https://realmarketapi.com" className="text-primary hover:underline" rel="noreferrer">RealMarketAPI</a> — real-time market data for forex, crypto, stocks, indices and commodities.
+        </p>
+      </section>
 
       {/* CTA Banner */}
       <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
