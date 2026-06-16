@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import logo from "../assets/logo.png.asset.json";
+import { Analytics } from "@vercel/analytics/react";
 
 const links = [
   { to: "/position-size", label: "Position Size" },
@@ -12,6 +13,7 @@ const links = [
 export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
+      <Analytics />
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2.5">
           <img src={logo.url} alt="RealMarketAPI" width={32} height={32} className="h-8 w-8" />
