@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "calculators.realmarketapi.com";
+const BASE_URL = "https://calculators.realmarketapi.com";
 
 const paths = ["/", "/position-size", "/risk", "/margin", "/drawdown", "/profit"];
 
