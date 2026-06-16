@@ -126,17 +126,20 @@ function Home() {
       {/* Education */}
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <h2 className="font-display text-2xl font-bold sm:text-3xl">Why Risk Management Matters</h2>
-        <p className="mt-2 max-w-2xl text-muted-foreground">The single largest predictor of long-term trading survival is how you size and manage risk — not how often you’re right.</p>
+        <p className="mt-2 max-w-2xl text-muted-foreground">The single largest predictor of long-term trading survival is how you size and manage risk.</p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { t: "Never risk more than 1–2% per trade", d: "Small per-trade risk lets you survive losing streaks without blowing up." },
-            { t: "Protect your capital first", d: "Capital preservation is the prerequisite for compounding. Defense before offense." },
-            { t: "Consistency beats large wins", d: "A steady edge applied with discipline outperforms occasional home runs." },
-            { t: "R:R beats win rate", d: "A 40% win rate with 1:3 risk-to-reward outperforms 60% wins with 1:1." },
+            { t: "Never risk more than 1–2% per trade", d: "Small per-trade risk lets you survive losing streaks without blowing up.", Icon: Lock },
+            { t: "Protect your capital first", d: "Capital preservation is the prerequisite for compounding.", Icon: Shield },
+            { t: "Consistency beats large wins", d: "A steady edge applied with discipline outperforms occasional home runs.", Icon: Repeat },
+            { t: "R:R beats win rate", d: "A 40% win rate with 1:3 risk-to-reward outperforms 60% wins with 1:1.", Icon: Scale },
           ].map((c) => (
-            <div key={c.t} className="rounded-xl border border-border bg-card p-6">
-              <h3 className="font-display text-base font-semibold">{c.t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{c.d}</p>
+            <div key={c.t} className="group animate-fade-in rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <c.Icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-3 font-display text-base font-semibold">{c.t}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{c.d}</p>
             </div>
           ))}
         </div>
