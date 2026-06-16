@@ -53,6 +53,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@RealMarketAPI" },
+      { property: "og:title", content: "Free Trading Calculators | RealMarketAPI" },
+      { name: "twitter:title", content: "Free Trading Calculators | RealMarketAPI" },
+      { property: "og:description", content: "Free professional trading calculators for forex, gold, crypto, stocks, indices and commodities. Position size, risk, margin, drawdown, and profit." },
+      { name: "twitter:description", content: "Free professional trading calculators for forex, gold, crypto, stocks, indices and commodities. Position size, risk, margin, drawdown, and profit." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c6616c99-661b-4933-b37a-d65b398a1d99/id-preview-666aeb80--a1e2155c-acea-435a-80cc-d21284b1faa1.lovable.app-1781623450593.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c6616c99-661b-4933-b37a-d65b398a1d99/id-preview-666aeb80--a1e2155c-acea-435a-80cc-d21284b1faa1.lovable.app-1781623450593.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
