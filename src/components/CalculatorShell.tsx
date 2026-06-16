@@ -45,13 +45,17 @@ export function CalculatorShell({
         <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
         <p className="mt-3 max-w-2xl text-muted-foreground">{description}</p>
       </header>
-      <div className="mt-8 grid gap-6 lg:grid-cols-5">
+      <div className="mt-8 grid gap-6 animate-fade-in lg:grid-cols-5">
         <section aria-label="Inputs" className="rounded-xl border border-border bg-card p-6 lg:col-span-3">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Inputs</h2>
+          <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+            <SlidersHorizontal className="h-4 w-4" /> Inputs
+          </div>
           <div className="mt-4 space-y-4">{inputs}</div>
         </section>
         <aside aria-label="Results" className="rounded-xl border border-border bg-card p-6 lg:col-span-2">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Results</h2>
+          <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+            <BarChart3 className="h-4 w-4" /> Results
+          </div>
           <div className="mt-4 space-y-4">{outputs}</div>
         </aside>
       </div>
