@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Calculator, Shield, Landmark, TrendingDown, TrendingUp, Lock, BarChart3, Repeat, Scale } from "lucide-react";
 
 const CALCS = [
   { to: "/position-size", title: "Position Size Calculator", desc: "Calculate the ideal position size based on your account balance and risk management rules." },
