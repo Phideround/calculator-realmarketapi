@@ -2,11 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Calculator, Shield, Landmark, TrendingDown, TrendingUp, Lock, BarChart3, Repeat, Scale } from "lucide-react";
 
 const CALCS = [
-  { to: "/position-size", title: "Position Size Calculator", desc: "Calculate the ideal position size based on your account balance and risk management rules." },
-  { to: "/risk", title: "Risk Calculator", desc: "Understand exactly how much capital you are risking before entering a trade." },
-  { to: "/margin", title: "Margin Calculator", desc: "Estimate margin requirements before opening a trade." },
-  { to: "/drawdown", title: "Drawdown Calculator", desc: "Measure account performance and understand recovery requirements." },
-  { to: "/profit", title: "Profit Calculator", desc: "Estimate potential gains and losses before placing a trade." },
+  { to: "/position-size", title: "Position Size Calculator", desc: "Calculate the ideal position size based on your account balance and risk management rules.", Icon: Calculator },
+  { to: "/risk", title: "Risk Calculator", desc: "Understand exactly how much capital you are risking before entering a trade.", Icon: Shield },
+  { to: "/margin", title: "Margin Calculator", desc: "Estimate margin requirements before opening a trade.", Icon: Landmark },
+  { to: "/drawdown", title: "Drawdown Calculator", desc: "Measure account performance and understand recovery requirements.", Icon: TrendingDown },
+  { to: "/profit", title: "Profit Calculator", desc: "Estimate potential gains and losses before placing a trade.", Icon: TrendingUp },
 ] as const;
 
 const FAQ = [
