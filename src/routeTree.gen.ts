@@ -9,37 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as RiskRouteImport } from './routes/risk'
-import { Route as ProfitRouteImport } from './routes/profit'
-import { Route as PositionSizeRouteImport } from './routes/position-size'
-import { Route as MarginRouteImport } from './routes/margin'
-import { Route as DrawdownRouteImport } from './routes/drawdown'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DrawdownRouteImport } from './routes/drawdown'
+import { Route as MarginRouteImport } from './routes/margin'
+import { Route as PositionSizeRouteImport } from './routes/position-size'
+import { Route as ProfitRouteImport } from './routes/profit'
+import { Route as RiskRouteImport } from './routes/risk'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RiskRoute = RiskRouteImport.update({
-  id: '/risk',
-  path: '/risk',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProfitRoute = ProfitRouteImport.update({
-  id: '/profit',
-  path: '/profit',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PositionSizeRoute = PositionSizeRouteImport.update({
-  id: '/position-size',
-  path: '/position-size',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MarginRoute = MarginRouteImport.update({
-  id: '/margin',
-  path: '/margin',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DrawdownRoute = DrawdownRouteImport.update({
@@ -47,9 +27,29 @@ const DrawdownRoute = DrawdownRouteImport.update({
   path: '/drawdown',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const MarginRoute = MarginRouteImport.update({
+  id: '/margin',
+  path: '/margin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PositionSizeRoute = PositionSizeRouteImport.update({
+  id: '/position-size',
+  path: '/position-size',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfitRoute = ProfitRouteImport.update({
+  id: '/profit',
+  path: '/profit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RiskRoute = RiskRouteImport.update({
+  id: '/risk',
+  path: '/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -123,39 +123,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/risk': {
-      id: '/risk'
-      path: '/risk'
-      fullPath: '/risk'
-      preLoaderRoute: typeof RiskRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/profit': {
-      id: '/profit'
-      path: '/profit'
-      fullPath: '/profit'
-      preLoaderRoute: typeof ProfitRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/position-size': {
-      id: '/position-size'
-      path: '/position-size'
-      fullPath: '/position-size'
-      preLoaderRoute: typeof PositionSizeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/margin': {
-      id: '/margin'
-      path: '/margin'
-      fullPath: '/margin'
-      preLoaderRoute: typeof MarginRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/drawdown': {
@@ -165,11 +137,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DrawdownRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/margin': {
+      id: '/margin'
+      path: '/margin'
+      fullPath: '/margin'
+      preLoaderRoute: typeof MarginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/position-size': {
+      id: '/position-size'
+      path: '/position-size'
+      fullPath: '/position-size'
+      preLoaderRoute: typeof PositionSizeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profit': {
+      id: '/profit'
+      path: '/profit'
+      fullPath: '/profit'
+      preLoaderRoute: typeof ProfitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/risk': {
+      id: '/risk'
+      path: '/risk'
+      fullPath: '/risk'
+      preLoaderRoute: typeof RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
