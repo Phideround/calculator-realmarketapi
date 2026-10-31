@@ -53,10 +53,11 @@ function Page() {
           <p>Risk = |Entry − Stop| × Position Size. Risk % = Risk ÷ Account Balance × 100.</p>
         </>
       }
+      learn={{ article: "stop-loss-strategies", articleTitle: "Stop Loss Strategies", category: "risk-management", categoryName: "Risk Management" }}
     />
   );
 }
 
 function bc(name: string, path: string) {
-  return { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://calculators.realmarketapi.com/" }, { "@type": "ListItem", position: 2, name, item: `https://calculators.realmarketapi.com${path}` }] }) };
+  return { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://calculator.realmarketapi.com/" }, { "@type": "ListItem", position: 2, name, item: `https://calculator.realmarketapi.com${path}` }] }) };
 }

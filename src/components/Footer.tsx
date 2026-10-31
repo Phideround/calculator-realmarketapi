@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Globe, Twitter, Facebook, Instagram } from "lucide-react";
 import logo from "../assets/logo.png.asset.json";
+import { DOCS_URL, GAME_URL, LEARN_URL, REGISTER_URL, SITE_URL, withUtm } from "../lib/links";
 
 function BskyIcon({ className }: { className?: string }) {
   return (
@@ -61,13 +62,18 @@ export function Footer() {
             <li><Link to="/margin" className="hover:text-foreground">Margin</Link></li>
             <li><Link to="/drawdown" className="hover:text-foreground">Drawdown</Link></li>
             <li><Link to="/profit" className="hover:text-foreground">Profit</Link></li>
+            <li><Link to="/pip-value" className="hover:text-foreground">Pip Value</Link></li>
+            <li><Link to="/risk-reward" className="hover:text-foreground">Risk/Reward</Link></li>
           </ul>
         </div>
         <div>
           <h3 className="text-sm font-semibold">RealMarketAPI</h3>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-            <li><a href="https://realmarketapi.com" className="inline-flex items-center gap-1.5 hover:text-foreground"><Globe className="h-3.5 w-3.5" /> realmarketapi.com</a></li>
-            <li><a href="https://learn.realmarketapi.com" className="hover:text-foreground">Learn</a></li>
+            <li><a href={withUtm(SITE_URL, "footer")} target="_blank" rel="noreferrer noopener" className="inline-flex items-center gap-1.5 hover:text-foreground"><Globe className="h-3.5 w-3.5" /> realmarketapi.com</a></li>
+            <li><a href={withUtm(REGISTER_URL, "footer")} target="_blank" rel="noreferrer noopener" className="hover:text-foreground">Get a free API key</a></li>
+            <li><a href={withUtm(DOCS_URL, "footer")} target="_blank" rel="noreferrer noopener" className="hover:text-foreground">API Docs</a></li>
+            <li><a href={withUtm(LEARN_URL, "footer")} target="_blank" rel="noreferrer noopener" className="hover:text-foreground">Learn trading</a></li>
+            <li><a href={withUtm(GAME_URL, "footer")} target="_blank" rel="noreferrer noopener" className="hover:text-foreground">Trading game</a></li>
             <li><a href="mailto:admin@realmarketapi.com" className="inline-flex items-center gap-1.5 hover:text-foreground"><Mail className="h-3.5 w-3.5" /> admin@realmarketapi.com</a></li>
             <li><a href="mailto:support@realmarketapi.com" className="inline-flex items-center gap-1.5 hover:text-foreground"><Mail className="h-3.5 w-3.5" /> support@realmarketapi.com</a></li>
             <li><a href="/sitemap.xml" className="hover:text-foreground">Sitemap</a></li>

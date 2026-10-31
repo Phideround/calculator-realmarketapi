@@ -12,9 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DrawdownRouteImport } from './routes/drawdown'
 import { Route as MarginRouteImport } from './routes/margin'
+import { Route as PipValueRouteImport } from './routes/pip-value'
 import { Route as PositionSizeRouteImport } from './routes/position-size'
 import { Route as ProfitRouteImport } from './routes/profit'
 import { Route as RiskRouteImport } from './routes/risk'
+import { Route as RiskRewardRouteImport } from './routes/risk-reward'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 
 const IndexRoute = IndexRouteImport.update({
@@ -32,6 +34,11 @@ const MarginRoute = MarginRouteImport.update({
   path: '/margin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PipValueRoute = PipValueRouteImport.update({
+  id: '/pip-value',
+  path: '/pip-value',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PositionSizeRoute = PositionSizeRouteImport.update({
   id: '/position-size',
   path: '/position-size',
@@ -47,6 +54,11 @@ const RiskRoute = RiskRouteImport.update({
   path: '/risk',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RiskRewardRoute = RiskRewardRouteImport.update({
+  id: '/risk-reward',
+  path: '/risk-reward',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -57,18 +69,22 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/drawdown': typeof DrawdownRoute
   '/margin': typeof MarginRoute
+  '/pip-value': typeof PipValueRoute
   '/position-size': typeof PositionSizeRoute
   '/profit': typeof ProfitRoute
   '/risk': typeof RiskRoute
+  '/risk-reward': typeof RiskRewardRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/drawdown': typeof DrawdownRoute
   '/margin': typeof MarginRoute
+  '/pip-value': typeof PipValueRoute
   '/position-size': typeof PositionSizeRoute
   '/profit': typeof ProfitRoute
   '/risk': typeof RiskRoute
+  '/risk-reward': typeof RiskRewardRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
@@ -76,9 +92,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/drawdown': typeof DrawdownRoute
   '/margin': typeof MarginRoute
+  '/pip-value': typeof PipValueRoute
   '/position-size': typeof PositionSizeRoute
   '/profit': typeof ProfitRoute
   '/risk': typeof RiskRoute
+  '/risk-reward': typeof RiskRewardRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
@@ -87,27 +105,33 @@ export interface FileRouteTypes {
     | '/'
     | '/drawdown'
     | '/margin'
+    | '/pip-value'
     | '/position-size'
     | '/profit'
     | '/risk'
+    | '/risk-reward'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/drawdown'
     | '/margin'
+    | '/pip-value'
     | '/position-size'
     | '/profit'
     | '/risk'
+    | '/risk-reward'
     | '/sitemap.xml'
   id:
     | '__root__'
     | '/'
     | '/drawdown'
     | '/margin'
+    | '/pip-value'
     | '/position-size'
     | '/profit'
     | '/risk'
+    | '/risk-reward'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
@@ -115,9 +139,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DrawdownRoute: typeof DrawdownRoute
   MarginRoute: typeof MarginRoute
+  PipValueRoute: typeof PipValueRoute
   PositionSizeRoute: typeof PositionSizeRoute
   ProfitRoute: typeof ProfitRoute
   RiskRoute: typeof RiskRoute
+  RiskRewardRoute: typeof RiskRewardRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -144,6 +170,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pip-value': {
+      id: '/pip-value'
+      path: '/pip-value'
+      fullPath: '/pip-value'
+      preLoaderRoute: typeof PipValueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/position-size': {
       id: '/position-size'
       path: '/position-size'
@@ -165,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RiskRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/risk-reward': {
+      id: '/risk-reward'
+      path: '/risk-reward'
+      fullPath: '/risk-reward'
+      preLoaderRoute: typeof RiskRewardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -179,9 +219,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DrawdownRoute: DrawdownRoute,
   MarginRoute: MarginRoute,
+  PipValueRoute: PipValueRoute,
   PositionSizeRoute: PositionSizeRoute,
   ProfitRoute: ProfitRoute,
   RiskRoute: RiskRoute,
+  RiskRewardRoute: RiskRewardRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport

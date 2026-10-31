@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Calculator, Shield, Landmark, TrendingDown, TrendingUp, Lock, BarChart3, Repeat, Scale } from "lucide-react";
+import { Calculator, Shield, Landmark, TrendingDown, TrendingUp, Lock, BarChart3, Repeat, Scale, Coins } from "lucide-react";
+import { DOCS_URL, SITE_URL, withUtm } from "../lib/links";
 
 const CALCS = [
   { to: "/position-size", title: "Position Size Calculator", desc: "Calculate the ideal position size based on your account balance and risk management rules.", Icon: Calculator },
@@ -7,6 +8,8 @@ const CALCS = [
   { to: "/margin", title: "Margin Calculator", desc: "Estimate margin requirements before opening a trade.", Icon: Landmark },
   { to: "/drawdown", title: "Drawdown Calculator", desc: "Measure account performance and understand recovery requirements.", Icon: TrendingDown },
   { to: "/profit", title: "Profit Calculator", desc: "Estimate potential gains and losses before placing a trade.", Icon: TrendingUp },
+  { to: "/pip-value", title: "Pip Value Calculator", desc: "Find out how much a single pip is worth for your position, in your account currency.", Icon: Coins },
+  { to: "/risk-reward", title: "Risk/Reward Calculator", desc: "Compare what you risk with what you stand to gain, and see the win rate you need to break even.", Icon: Scale },
 ] as const;
 
 const FAQ = [
@@ -46,7 +49,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "Calculators.RealMarketAPI",
-          url: "https://calculators.realmarketapi.com",
+          url: "https://calculator.realmarketapi.com",
         }),
       },
     ],
@@ -157,7 +160,7 @@ function Home() {
           ))}
         </div>
         <p className="mt-8 text-sm text-muted-foreground">
-          Built as a companion to <a href="https://realmarketapi.com" className="text-primary hover:underline" rel="noreferrer">RealMarketAPI</a> — real-time market data for forex, crypto, stocks, indices and commodities.
+          Built as a companion to <a href={withUtm(SITE_URL, "home_faq")} className="text-primary hover:underline" rel="noreferrer">RealMarketAPI</a> — real-time market data for forex, crypto, stocks, indices and commodities.
         </p>
       </section>
 
@@ -173,14 +176,24 @@ function Home() {
                 RealMarketAPI delivers forex, crypto, stocks, indices and commodities data with a single API.
               </p>
             </div>
-            <a
-              href="https://realmarketapi.com"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="inline-flex shrink-0 items-center rounded-md bg-[#0f172a] px-5 py-3 text-sm font-semibold text-white hover:opacity-90"
-            >
-              Get RealMarketAPI →
-            </a>
+            <div className="flex shrink-0 flex-col items-start gap-2 sm:items-end">
+              <a
+                href={withUtm(SITE_URL, "home_cta")}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center rounded-md bg-[#0f172a] px-5 py-3 text-sm font-semibold text-white hover:opacity-90"
+              >
+                Get RealMarketAPI →
+              </a>
+              <a
+                href={withUtm(DOCS_URL, "home_cta")}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="text-sm font-medium text-primary-foreground/85 hover:text-primary-foreground hover:underline"
+              >
+                Read the API docs
+              </a>
+            </div>
           </div>
         </div>
       </section>

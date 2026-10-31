@@ -62,6 +62,7 @@ function Page() {
           <p>Pair this tool with the <a href="/risk">risk calculator</a> to sanity-check the dollar risk before sending the order.</p>
         </>
       }
+      learn={{ article: "position-sizing", articleTitle: "Position Sizing", category: "risk-management", categoryName: "Risk Management" }}
     />
   );
 }
@@ -73,8 +74,8 @@ function breadcrumb(name: string, path: string) {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://calculators.realmarketapi.com/" },
-        { "@type": "ListItem", position: 2, name, item: `https://calculators.realmarketapi.com${path}` },
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://calculator.realmarketapi.com/" },
+        { "@type": "ListItem", position: 2, name, item: `https://calculator.realmarketapi.com${path}` },
       ],
     }),
   };

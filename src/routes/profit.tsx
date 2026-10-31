@@ -66,10 +66,11 @@ function Page() {
           <p>For a long: P/L = (Exit − Entry) × Size. For a short: P/L = (Entry − Exit) × Size. ROI is computed against notional entry cost.</p>
         </>
       }
+      learn={{ article: "long-vs-short-positions", articleTitle: "Long vs Short Positions", category: "trading-basics", categoryName: "Trading Basics" }}
     />
   );
 }
 
 function bc(name: string, path: string) {
-  return { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://calculators.realmarketapi.com/" }, { "@type": "ListItem", position: 2, name, item: `https://calculators.realmarketapi.com${path}` }] }) };
+  return { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://calculator.realmarketapi.com/" }, { "@type": "ListItem", position: 2, name, item: `https://calculator.realmarketapi.com${path}` }] }) };
 }

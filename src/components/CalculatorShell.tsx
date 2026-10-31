@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { SlidersHorizontal, BarChart3 } from "lucide-react";
+import { SlidersHorizontal, BarChart3, BookOpen, Code2 } from "lucide-react";
 import type { ReactNode } from "react";
+import { DOCS_URL, REGISTER_URL, learnArticle, learnCategory, withUtm } from "../lib/links";
 
 interface Crumb { to?: string; label: string }
 
@@ -30,6 +31,7 @@ export function CalculatorShell({
   outputs,
   about,
   breadcrumbs,
+  learn,
 }: {
   title: string;
   description: string;
@@ -37,6 +39,7 @@ export function CalculatorShell({
   outputs: ReactNode;
   about: ReactNode;
   breadcrumbs: Crumb[];
+  learn?: LearnLink;
 }) {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
@@ -62,7 +65,57 @@ export function CalculatorShell({
       <section className="mt-12 prose prose-invert prose-headings:font-display max-w-none text-muted-foreground prose-strong:text-foreground prose-a:text-primary">
         {about}
       </section>
+      {learn && <LearnCta {...learn} />}
     </div>
+  );
+}
+
+export interface LearnLink {
+  /** learn.realmarketapi.com article slug, e.g. "position-sizing" */
+  article: string;
+  articleTitle: string;
+  /** learn.realmarketapi.com category slug, e.g. "risk-management" */
+  category: string;
+  categoryName: string;
+}
+
+export function LearnCta({ article, articleTitle, category, categoryName }: LearnLink) {
+  const linkCls = "font-medium text-primary hover:underline";
+  return (
+    <section aria-label="Learn more" className="mt-10 grid gap-4 sm:grid-cols-2">
+      <div className="rounded-xl border border-border bg-card p-6">
+        <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+          <BookOpen className="h-4 w-4" /> Keep learning
+        </div>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Read{" "}
+          <a href={withUtm(learnArticle(article), "calculator_cta")} target="_blank" rel="noreferrer noopener" className={linkCls}>
+            {articleTitle}
+          </a>{" "}
+          or browse the{" "}
+          <a href={withUtm(learnCategory(category), "calculator_cta")} target="_blank" rel="noreferrer noopener" className={linkCls}>
+            {categoryName}
+          </a>{" "}
+          guides on RealMarketAPI Learn.
+        </p>
+      </div>
+      <div className="rounded-xl border border-border bg-card p-6">
+        <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+          <Code2 className="h-4 w-4" /> Build with live prices
+        </div>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Feed calculations like this with real-time forex, gold and crypto prices from RealMarketAPI.{" "}
+          <a href={withUtm(REGISTER_URL, "calculator_cta")} target="_blank" rel="noreferrer noopener" className={linkCls}>
+            Get a free API key
+          </a>{" "}
+          or{" "}
+          <a href={withUtm(DOCS_URL, "calculator_cta")} target="_blank" rel="noreferrer noopener" className={linkCls}>
+            read the docs
+          </a>
+          .
+        </p>
+      </div>
+    </section>
   );
 }
 

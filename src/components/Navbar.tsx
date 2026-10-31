@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import logo from "../assets/logo.png.asset.json";
 import { Analytics } from "@vercel/analytics/react";
+import { SITE_URL, withUtm } from "../lib/links";
 
 const links = [
   { to: "/position-size", label: "Position Size" },
@@ -8,6 +9,8 @@ const links = [
   { to: "/margin", label: "Margin" },
   { to: "/drawdown", label: "Drawdown" },
   { to: "/profit", label: "Profit" },
+  { to: "/pip-value", label: "Pip Value" },
+  { to: "/risk-reward", label: "Risk/Reward" },
 ] as const;
 
 export function Navbar() {
@@ -21,20 +24,20 @@ export function Navbar() {
             Calculators<span className="text-muted-foreground">.RealMarketAPI</span>
           </span>
         </Link>
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-0.5 lg:flex">
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-              activeProps={{ className: "rounded-md px-3 py-2 text-sm font-medium text-foreground bg-secondary" }}
+              className="rounded-md px-2 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground xl:px-3"
+              activeProps={{ className: "rounded-md px-2 py-2 text-sm font-medium text-foreground bg-secondary xl:px-3" }}
             >
               {l.label}
             </Link>
           ))}
         </div>
         <a
-          href="https://realmarketapi.com"
+          href={withUtm(SITE_URL, "navbar")}
           target="_blank"
           rel="noreferrer noopener"
           className="hidden rounded-md brand-gradient px-3.5 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 sm:inline-flex"

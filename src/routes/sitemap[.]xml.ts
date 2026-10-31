@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "https://calculators.realmarketapi.com";
+const BASE_URL = "https://calculator.realmarketapi.com";
 
-const paths = ["/", "/position-size", "/risk", "/margin", "/drawdown", "/profit"];
+const paths = ["/", "/position-size", "/risk", "/margin", "/drawdown", "/profit", "/pip-value", "/risk-reward"];
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
